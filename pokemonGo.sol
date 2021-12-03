@@ -37,9 +37,9 @@ contract PokemonGo is Ownable, ERC721 {
     }
 
     function createRandomPokemon(string memory _name, uint _place) public payable{
-        // require(msg.value >= create_fee);
-        //require(_balances[msg.sender] == 0);
-        // payable(address(this)).transfer(msg.value);
+        require(msg.value >= create_fee);
+        require(_balances[msg.sender] == 0);
+        payable(address(this)).transfer(msg.value);
         uint randDna =(uint(keccak256(bytes(_name))) + block.timestamp) % 3; // starting pokemon dna 0,1,2
         _createPokemon(_name, randDna, _place);
     }

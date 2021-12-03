@@ -10,7 +10,6 @@ contract PokemonHelper is PokemonGo {
     
     function challenge(uint id, uint place) external payable{
         require(_owners[id] == msg.sender);
-        require(pokemons[id].place == )
         require(msg.value > 0.001 ether);
         payable(address(_owners[gardians[place]])).transfer(msg.value/2);
         if(gardians[place] == 0)
